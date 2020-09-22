@@ -1,5 +1,13 @@
 export const posts = [
   {
+    title: "Different ways to render a web page",
+    date: "21 September 2020",
+    previewText:
+      "When I first started learning web development, I found terms like static site, dynamic site, server-side rendering and single-page application quite confusing...",
+    location: "../assets/blogPosts/21-september-2020.md",
+    path: "different-ways-to-render-a-web-page",
+  },
+  {
     title: "A guide to regular expressions",
     date: "8 March 2020",
     previewText:
