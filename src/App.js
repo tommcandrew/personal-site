@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import Home from "./components/Home";
 import Portfolio from "./components/Portfolio";
 import Blog from "./components/Blog";
