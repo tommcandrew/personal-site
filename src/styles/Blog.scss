@@ -1,0 +1,51 @@
+.blog__wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+.blog__content a {
+  color: #ccc;
+}
+
+.blog__preview {
+  cursor: pointer;
+  opacity: 0;
+  padding: 0 1.5rem;
+  padding-bottom: 3rem;
+  margin: 3rem 0;
+}
+
+.blog__date {
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+.blog__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.blog__previewText {
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .blog__content {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .blog__title {
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .blog__content {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .blog__content {
+    width: 50%;
+  }
+}

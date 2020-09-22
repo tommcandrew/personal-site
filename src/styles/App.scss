@@ -1,0 +1,11 @@
+.app__wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1000px) {
+  .app__wrapper {
+    margin-top: 0rem;
+  }
+}

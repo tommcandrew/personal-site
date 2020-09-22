@@ -1,0 +1,47 @@
+.post__wrapper {
+  color: #ccc;
+  padding: 4rem 2rem;
+  h1 {
+    text-align: center;
+  }
+  h1 + p {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  pre {
+    border-radius: 6px;
+  }
+  h1,
+  h2 {
+    margin: 1rem 0;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.post__back {
+  border: 2px solid rgb(238, 196, 11);
+  border-radius: 20px;
+  width: 40%;
+  max-width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  user-select: none;
+  font-size: 1.4rem;
+  margin: 4rem auto;
+  background-color: $darkBg;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+  .post__wrapper {
+    margin: 0 15rem;
+    padding: 6rem 2rem;
+  }
+}

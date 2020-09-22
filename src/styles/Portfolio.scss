@@ -1,0 +1,40 @@
+.portfolio__wrapper {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  flex-grow: 1;
+}
+
+.portfolio__buttons {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  bottom: 2rem;
+}
+
+.portfolio__button {
+  color: #ccc;
+  font-size: 2.5rem;
+  margin: 0 3rem;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+  .portfolio__wrapper {
+    margin: 0 0 0 20vw;
+  }
+  .portfolio__buttons {
+    left: 0;
+  }
+}

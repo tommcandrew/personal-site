@@ -1,0 +1,135 @@
+.projectPreview__wrapper {
+  color: #ccc;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.projectPreview__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.projectPreview__info {
+  flex-basis: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.projectPreview__title {
+  font-size: 3.5rem;
+  width: 100%;
+  line-height: 110%;
+  user-select: none;
+  text-align: center;
+}
+
+.projectPreview__description {
+  margin-top: 1rem;
+  user-select: none;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.projectPreview__links div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.projectPreview__link {
+  border: 2px solid $reddish;
+  border-radius: 20px;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  user-select: none;
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+.projectPreview__github {
+  font-size: 2.5rem;
+  color: #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.projectPreview__image {
+  width: 90%;
+  transform: rotateY(-20deg);
+  -webkit-box-reflect: below 8px -webkit-gradient(linear, right top, right
+        bottom, from(transparent), color-stop(80%, transparent), to(rgba(255, 255, 255, 0.1)));
+  outline: 1px solid transparent;
+}
+
+.projectPreview__image-wrapper {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 60%;
+  max-width: 750px;
+  user-select: none;
+  width: 90%;
+  margin: 0 auto;
+  transform: rotateY(-20deg);
+  transform-style: preserve-3d;
+  perspective: 1700px;
+  outline: 1px solid transparent;
+  display: none;
+}
+
+.projectPreview__image-overlay {
+  transform: rotateY(-20deg);
+  outline: 1px solid transparent;
+}
+
+/* tablet */
+@media screen and (min-width: 500px) {
+  .projectPreview__content {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .projectPreview__info {
+    width: 60%;
+  }
+}
+
+/* laptop */
+@media screen and (min-width: 1000px) {
+  .projectPreview__content {
+    flex-direction: row;
+    width: 100%;
+    // padding-top: 6rem;
+  }
+
+  .projectPreview__image-wrapper {
+    width: 100%;
+    display: block;
+  }
+  .projectPreview__title {
+    text-align: left;
+  }
+  .projectPreview__description {
+    text-align: left;
+  }
+  .projectPreview__links {
+    width: 80%;
+  }
+  .projectPreview__links div:nth-child(1) {
+    justify-content: space-between;
+  }
+}

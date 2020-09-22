@@ -1,0 +1,12 @@
+.socialIcons__wrapper {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  opacity: 0;
+}
+
+.socialIcons__link > * {
+  margin: 0 2rem;
+  color: #ccc;
+}
