@@ -34,14 +34,14 @@ export const projects = [
     title: "Clear English IPA",
     path: "clear-english-ipa",
     date: "July 2020",
-    siteLink: "www.clearenglishipa.com",
+    siteLink: "http://www.clearenglishipa.com",
     repoLink: "https://github.com/tommcandrew/clear-english-ipa",
     description:
       "A professional site for an English teacher based in Hong Kong.",
     skills: ["JavaScript", "CSS", "React", "Gatsby", "Contentful", "Netlify"],
     paragraphs: [
       "An English teacher in Hong Kong requested that I make a website for her private tutoring business. I worked from a design provided to me and the client was very particular that the final website must replicate it exactly. She wanted the website to be available in four languages/scripts - English, simplified Chinese, traditional Chinese and Japanese. She also requested that she be able to update the tuition fees displayed on the website herself.",
-      "The languages proved a challenge, mostly as I had to copy all text formatting from the design and this was quite difficult when working with Chinese and Japanese characters. In addition, the fonts and font sizes needed to be applied conditionally depending on the language. To allow the client to update the tuition fees information herself, I created an admin section with a form that updates the information on Contentful using the API.",
+      "The languages proved a challenge, mostly as I had to copy all text formatting from the design and this was quite difficult when working with Chinese and Japanese characters. In addition, the fonts and font sizes needed to be applied conditionally depending on the language. To allow the client to update the tuition fees and publish posts to the blog section, the site is connected to the Contentful (headless) CMS.",
     ],
   },
   {
