@@ -7,8 +7,10 @@ import post2 from "../assets/blogPosts/01-january-2020.md";
 import post3 from "../assets/blogPosts/03-january-2020.md";
 import post4 from "../assets/blogPosts/08-march-2020.md";
 import post5 from "../assets/blogPosts/21-september-2020.md";
+import post6 from "../assets/blogPosts/24-september-2020.md";
 
 const imports = {
+  "uploading-files-with-node": post6,
   "different-ways-to-render-a-web-page": post5,
   "a-guide-to-regular-expressions": post4,
   "deploying-a-mern-app-for-free-to-heroku": post3,

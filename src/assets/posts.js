@@ -1,5 +1,13 @@
 export const posts = [
   {
+    title: "Uploading files with Node",
+    date: "24 September 2020",
+    previewText:
+      "Let's say you have a HTML form as part of your server-side rendered Node/Express application...",
+    location: "../assets/blogPosts/24-september-2020.md",
+    path: "uploading-files-with-node",
+  },
+  {
     title: "Different ways to render a web page",
     date: "21 September 2020",
     previewText:
