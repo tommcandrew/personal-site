@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown/with-html";
 import CodeBlock from "./CodeBlock";
 import { Link } from "react-router-dom";
 import post1 from "../assets/blogPosts/27-december-2019.md";
@@ -32,7 +32,11 @@ const Post = ({ match }) => {
 
   return (
     <div className="post__wrapper">
-      <ReactMarkdown source={markdown} renderers={{ code: CodeBlock }} />
+      <ReactMarkdown
+        source={markdown}
+        renderers={{ code: CodeBlock }}
+        escapeHtml={false}
+      />
       <Link to="/blog" className="post__back">
         Back
       </Link>

@@ -4,9 +4,9 @@ _3 January 2020_
 
 We're going to learn how to build and deploy a MERN-stack app (MongoDB, Express, React, Node) for free to Heroku. For this example, we'll build a simple app where the user can add the name of a country and the capital city and this information will be displayed in a table.
 
-You can see the final project live here and the source code here.
+You can see the final project live [here](https://mern-country-list.herokuapp.com/) and the source code [here](https://github.com/tommcandrew/mern-country-list).
 
-If you already have a MERN app ready to deploy, you can use that but you'll need to make a number of small changes to your code. In the following section I've highlighted the lines where these are mentioned in green. Also, your front-end directory ("client") should be inside the main project directory with the file containing the Express server at the top level. This is my project structure:
+If you already have a MERN app ready to deploy, you can use that but you'll need to make a number of small changes to your code. In the following section I've <mark>highlighted</mark> the lines where these are mentioned. Also, your front-end directory ("client") should be inside the main project directory with the file containing the Express server at the top level. This is my project structure:
 
 - main-project-folder
 
@@ -27,9 +27,13 @@ First, create a folder for your project (I'll call it "country-info") and inside
 npm init
 ```
 
+&nbsp;
+
 ```javascript
 git init
 ```
+
+&nbsp;
 
 Add a ".gitignore" file, type in node_modules and save, so that folder isn't included when we push to our remote repo.
 
@@ -40,11 +44,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 ```
 
+&nbsp;
+
 I also recommend installing the Nodemon package so we don't need to restart our server every time we save a change. You can install this globally on your machine by adding the global flag:
 
 ```javascript
 npm i nodemon -g
 ```
+
+&nbsp;
 
 Let's set up our app with:
 
@@ -52,11 +60,15 @@ Let's set up our app with:
 const app = express();
 ```
 
-We now have to tell the app which port to use. This will be different depending on whether you're running the app locally on your computer or after it's been deployed. You can specify the port for when it's running locally but Heroku will assign a port automatically when it's deployed. The port number will be made available as an environment variable. So we need to give it the two options like this:
+&nbsp;
+
+We now have to tell the app which port to use. This will be different depending on whether you're running the app locally on your computer or after it's been deployed. You can specify the port for when it's running locally but Heroku will assign a port automatically when it's deployed. The port number will be made available as an environment variable. <mark>So we need to give it the two options like this</mark>:
 
 ```javascript
 const port = process.env.PORT || 5000;
 ```
+
+&nbsp;
 
 This is telling the app to check first if there's an environment variable called PORT available (provided automatically by Heroku) and, if there isn't, then use port 5000 (you can choose any port that's free).
 
@@ -68,14 +80,18 @@ app.listen(port, () => {
 });
 ```
 
+&nbsp;
+
 Now let's connect to our databse. In this example I'll be using MongoDB Compass installed on my computer. If you don't have MongoDB installed, you can download it <a title="MongoDB" style="color: blue; font-weight: bold" href="https://www.mongodb.com/download-center" target="_blank">here. Now, just like with the port, we need to give it two options depending on whether the app is running locally or with Heroku. If it's running locally, the app should use the database installed on your computer and, if it's deployed with Heroku, it should use the mLab MongoDB database that we'll add to our app on Heroku later.
 
-A connection URI for Mongo will be provided as an environment variable by Heroku when deployed so again we give the app two options like this:
+A connection URI for Mongo will be provided as an environment variable by Heroku when deployed so again <mark>we give the app two options like this</mark>:
 
 ```javascript
 const myMongoUri =
   process.env.MONGODB_URI || "mongodb://localhost:27017/country-info";
 ```
+
+&nbsp;
 
 Now we'll tell the app to connect to Mongo (if you don't include the additional options you'll get warnings in your console):
 
@@ -85,6 +101,8 @@ mongoose.connect(myMongoUri, {
   useUnifiedTopology: true,
 });
 ```
+
+&nbsp;
 
 It would be useful to know whether the app has connected to the databse successfully or not after we start the server. We can get it to tell us like this:
 
@@ -100,11 +118,15 @@ db.once("open", () => {
 });
 ```
 
+&nbsp;
+
 We can now check that our server works and is able to connect to our local database by running:
 
 ```
 nodemon server
 ```
+
+&nbsp;
 
 Hopefully your server is now running without any issues. Now, as we'll be saving data to MongoDB, we'll need to define at least one schema/model. So let's create a models folder in our project with a JavaScript file called "Country.model.js" and add the following code:
 
@@ -120,17 +142,23 @@ const Country = new Schema({
 module.exports = mongoose.model("Country", Country);
 ```
 
+&nbsp;
+
 Then require this model at the top of the "server.js" file:
 
 ```javascript
 const Country = require("./models/Country.model");
 ```
 
+&nbsp;
+
 We're almost ready to add our API endpoints. Before we do, we need to add one line to allow the server to parse any JSON it receives in the bodies of POST requests:
 
 ```javascript
 app.use(express.json());
 ```
+
+&nbsp;
 
 I'm going to give my app two endpoints. One to get all the data saved in the database and one to allow us to save new data (you can add endpoints for deleting and editing yourself if you like):
 
@@ -155,23 +183,29 @@ app.post("/addcountry", (req, res) => {
 });
 ```
 
+&nbsp;
+
 When we deploy our app later, Heroku is going to use the "npm run build" command in the "package.json" file of our front-end to bundle all of the front-end files into one optimised build folder. We need to tell the server where to find these files after this happens.
 
-To do this, we'll first require a module called path at the top of the file (this module is part of the Node.js core so it doesn't need to be installed).
+To do this, we'll first <mark>require a module called path</mark> at the top of the file (this module is part of the Node.js core so it doesn't need to be installed).
 
 ```javascript
 const path = require("path");
 ```
 
-Now add this line to the file:
+&nbsp;
+
+Now <mark>add this line</mark> to the file:
 
 ```javascript
 app.use(express.static(path.join(__dirname, "client/build")));
 ```
 
-The path module that we've used simply gets the path to the current file and then adds on whatever we specify. Express then knows to look in this location for the static files (which will be our JavaScript and any CSS).
+&nbsp;
 
-Now take a look in the project's "package.json" file and make sure there is a "start" script and that its value is set to "node server" (Heroku will use this command to start the app during deployment).
+The path module that we've used simply joins the path to the current directory with the path to the file you specify. Express then knows to look in this location for the static files (which will be our JavaScript and any CSS).
+
+Now take a look in the project's "package.json" file and <mark>make sure there is a "start" script and that its value is set to "node server"</mark> (Heroku will use this command to start the app during deployment).
 
 ### THE FRONT-END
 
@@ -180,6 +214,8 @@ Now let's create a new React project with:
 ```javascript
 npx create-react-app client
 ```
+
+&nbsp;
 
 I'm going to create two components - one will be a form for the user to add information about countries and the other will be to display this information.
 
@@ -207,6 +243,8 @@ const NewCountryForm = (props) => {
 
 export default NewCountryForm;
 ```
+
+&nbsp;
 
 And this is the second:
 
@@ -240,11 +278,15 @@ const CountryDisplay = ({ countries }) => {
 export default CountryDisplay;
 ```
 
+&nbsp;
+
 I need to install one package - axios - in my front-end folder. I'm going to use this to make calls to the server.
 
 ```javascript
 npm i axios
 ```
+
+&nbsp;
 
 Now in the "App.js" file, I'm going to use two React Hooks - useState and useEffect. The first to save the data in state and the second to trigger our fetch function when the component mounts. So import these along with axios and our two components at the top of the file:
 
@@ -254,6 +296,8 @@ import axios from "axios";
 import NewCountryForm from "./components/NewCountryForm";
 import CountryDisplay from "./components/CountryDisplay";
 ```
+
+&nbsp;
 
 The return statement should something look like this:
 
@@ -266,11 +310,15 @@ return (
 );
 ```
 
+&nbsp;
+
 And don't forget to export the component at the bottom of the file:
 
 ```jsx
 export default App;
 ```
+
+&nbsp;
 
 Above the return statement, we can add a function that makes the GET request to the server and saves the retrieved data in state:
 
@@ -287,6 +335,8 @@ const fetchData = () => {
 };
 ```
 
+&nbsp;
+
 I want this to run whenever the user opens the app so I'll use the useEffect Hook we imported:
 
 ```javascript
@@ -294,6 +344,8 @@ useEffect(() => {
   fetchData();
 }, []);
 ```
+
+&nbsp;
 
 And this is the function that makes a POST request to add a new country and then fetches from the database again:
 
@@ -314,19 +366,23 @@ const addCountry = (e) => {
 };
 ```
 
+&nbsp;
+
 You'll see that I'm not including the full URI of the server in the API calls. This is because I'm going to add the first part of the URI at the top of the "package.json" file (of the front-end) so I don't have to write it out in full every time.
 
 ```javascript
 "proxy": "http://localhost:5000"
 ```
 
-Now that we're finished writing the code for the front-end, we'll go back to the "package.json" file in the top-level of our project and add a new script that will tell Heroku to create the optimised build version by looking in the client folder, downloading the dependencies and running the "build" command:
+&nbsp;
+
+Now that we're finished writing the code for the front-end, we'll go back to the "package.json" file in the top-level of our project and <mark>add a new script that will tell Heroku to create the optimised build version by looking in the client folder, downloading the dependencies and running the "build" command</mark>:
 
 ```javascript
 "heroku-postbuild": "cd client && npm install && npm run build"
 ```
 
-(You must include the dash !)
+(You must include the dash!)
 
 Now, before deploying, it's a good idea to run the app locally to make sure everything's working. If it is and you've got no errors, then we can move on to deployment.
 
@@ -348,6 +404,8 @@ After committing all changes to Git, in the project directory in the terminal ru
 heroku create
 ```
 
+&nbsp;
+
 If it's your first time using the Heroku CLI you'll be prompted to log in. This command creates a new project that you can access on the Heroku website along with its own Git repo that you can push to.
 
 After that push to the Heroku Git repo with:
@@ -355,6 +413,8 @@ After that push to the Heroku Git repo with:
 ```javascript
 git push heroku master
 ```
+
+&nbsp;
 
 ### ADDING DATABASE
 
