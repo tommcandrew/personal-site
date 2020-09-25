@@ -54,7 +54,7 @@ Instead, you'll need to set the Content-Type of the request to **multipart/form-
 
 &nbsp;
 
-To allow Express to access the data attached to a standard request body object (i.e. url encoded), you need to use the express.urlencoded() middleware. Similarly, to allow it to access the data sent with a multipart/form-data request, you need to use middleware. There are many npm packages that you can use for this but, in this example, I'm going to use **express-fileupload**. After downloading the package, require it and set the middleware before the endpoint:
+To allow Express to access the data attached to a standard request body object (i.e. url encoded), you need to use the express.urlencoded() middleware. Similarly, to allow it to access the data sent with a multipart/form-data request, you need to use middleware. Node/Express does not support file uploads by default but there are many npm packages for this purpose. In this example, I'm going to use **express-fileupload**. After downloading the package, require it and set the middleware before the endpoint:
 
 ```javascript
 const fileUpload = require("express-fileupload");
