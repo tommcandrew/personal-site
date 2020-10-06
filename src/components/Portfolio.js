@@ -42,7 +42,7 @@ const Portfolio = ({ currentIndex, setCurrentIndex }) => {
         newIndex = currentIndex - 1;
       }
       setCurrentIndex(newIndex);
-    }, 500);
+    }, 800);
   };
 
   const goRight = () => {
@@ -55,7 +55,7 @@ const Portfolio = ({ currentIndex, setCurrentIndex }) => {
         newIndex = currentIndex + 1;
       }
       setCurrentIndex(newIndex);
-    }, 500);
+    }, 800);
   };
 
   const startAnimation = (dir) => {
