@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route, HashRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Home from "./components/Home";
 import Portfolio from "./components/Portfolio";
 import Blog from "./components/Blog";
@@ -32,7 +32,7 @@ const App = () => {
         humburgerActive={humburgerActive}
         toggleShowMenu={toggleShowMenu}
       />
-      <HashRouter>
+      <BrowserRouter>
         {showMenu && (
           <Menu handleCloseMenu={handleCloseMenu} showMenu={showMenu} />
         )}
@@ -53,7 +53,7 @@ const App = () => {
           <Route path={"/blog/:post"} component={Post} />
           <Route path="/contact" component={Contact} />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 };
